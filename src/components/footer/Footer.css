@@ -1,0 +1,8 @@
+.footer{
+    background-color: #61dafb;
+
+    height: 10vh;
+    bottom: 0;
+    position: fixed;
+    max-width: 2800px;
+}
