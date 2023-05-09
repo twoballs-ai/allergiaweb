@@ -7,11 +7,11 @@ import Main from './main/Main';
 function Layouts() {
     return (
  <>
- <Container>
+
  <Header />
  <Main />
  <Footer />
- </Container>
+
 
  </>
     );
