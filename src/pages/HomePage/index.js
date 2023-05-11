@@ -31,28 +31,26 @@ function HomePage(props) {
         
         return (allergensCards.map(allergensCard => (
 
-            <Card style={{ width: '18rem' }} className="m-2">
-                
-                <Col>{allergensCard.carriers.map((image) => ( <Image variant="top"  className="float-right" src={image.image} roundedCircle 
-                style={{width: 100, height: 100, borderRadius: 100/ 2}} />))}
-               </Col>
+            <Card style={{ width: '18rem' }} className="m-2 shadow">
                 <Card.Body>
 
                     <Card.Title>Название: {allergensCard.name}</Card.Title>
                     <Card.Text>
                         <h3>Компоненты:</h3>
-                        {allergensCard.carriers.map((allergen) => (<p>{allergen.name}</p>))}
-                    
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                {allergensCard.carriers.map((allergen) => (<ListGroup.Item><Image variant="top"  className="float-right" src={allergen.image} roundedCircle 
+                style={{width: 40, height: 40, borderRadius: 50/2}} />{allergen.name}</ListGroup.Item>))}                
+                </ListGroup>
+                <h4>Аллергены:</h4>
+                <ListGroup className="list-group-flush mt-2">
+                {allergensCard.carriers.map((allergen) => (<ListGroup.Item>{allergen.allergen.name}</ListGroup.Item>))}                
                 </ListGroup>
                 <Card.Body>
-                    <Card.Link href="#">Card Link</Card.Link>
-                    <Card.Link href="#">Another Link</Card.Link>
+                
+                    <Card.Link href="#">Подробнее</Card.Link>
+                    
                 </Card.Body>
             </Card>
 
