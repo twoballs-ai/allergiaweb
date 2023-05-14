@@ -5,9 +5,17 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import { Image } from "react-bootstrap";
+import Modal from 'react-bootstrap/Modal';
+import StepperAllergen from "../../components/stepper/stepper";
 function HomePage(props) {
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
     const [allergensCards, setAllergensCards] = useState([])
     const baseURL = "http://backend.ronzo.ru/";
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2MTI3MjEwLCJqdGkiOiJhMWE4YzU4MTM5ZWU0ZGNjOTE2YTZlY2EzM2FiNDRjNiIsInVzZXJfaWQiOjF9.w1KF271za6hzN_2y0HR6vdIx55QYPCRJatpg7LxLPQo"
@@ -61,7 +69,16 @@ function HomePage(props) {
     return (
 
         <Row>
-            <h1>Карточки аллергии:</h1>
+                  <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Добавить новую карточку</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <StepperAllergen />
+        </Modal.Body>
+
+      </Modal>
+            <h1>Карточки аллергии: <Button variant="primary" onClick={handleShow}>Добавить новую карточку</Button>{' '}</h1>
             <p>Карточки аллергии могут содержать один аллерген или несколько.</p>
             <Cards />
 
